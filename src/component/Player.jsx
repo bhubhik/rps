@@ -5,17 +5,17 @@ const Player = ({ setPlayerHand }) => {
     setPlayerHand(e.target.id);
   };
   return (
-    <>
-      <div onClick={setHand} id='rock' className='hand rock'>
+    <div className='container'>
+      <div onClick={setHand} id='Rock' className='hand rock'>
         Rock
       </div>
-      <div onClick={setHand} id='paper' className='hand paper'>
+      <div onClick={setHand} id='Paper' className='hand paper'>
         Paper
       </div>
-      <div onClick={setHand} id='scissors' className='hand scissors'>
+      <div onClick={setHand} id='Scissors' className='hand scissors'>
         Scissors
       </div>
-    </>
+    </div>
   );
 };
 
