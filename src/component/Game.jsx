@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-const Game = ({ score, playerHand, setScore }) => {
-  const [computerHand, setComputerHand] = useState('');
+const Game = ({ score, playersHand, setScore }) => {
   const [result, setResult] = useState('');
+  const [computerHand, setComputerHand] = useState('');
 
   const setHand = () => {
     const options = ['Rock', 'Paper', 'Scissors'];
@@ -10,15 +10,10 @@ const Game = ({ score, playerHand, setScore }) => {
     setComputerHand(options[hand]);
   };
 
-  useEffect(() => {
-    setHand();
-    draw();
-  }, [computerHand]);
-
   const draw = () => {
-    if (playerHand === computerHand) {
+    if (computerHand && playersHand === computerHand) {
       setResult('Draw');
-    } else if (playerHand === 'Rock') {
+    } else if (playersHand === 'Rock') {
       if (computerHand === 'Scissors') {
         setResult('You Win');
         setScore(score + 1);
@@ -26,7 +21,7 @@ const Game = ({ score, playerHand, setScore }) => {
         setResult('You Lose');
         setScore(score - 1);
       }
-    } else if (playerHand === 'Paper') {
+    } else if (playersHand === 'Paper') {
       if (computerHand === 'Scissors') {
         setResult('You Lose');
         setScore(score - 1);
@@ -34,7 +29,7 @@ const Game = ({ score, playerHand, setScore }) => {
         setResult('You Win');
         setScore(score + 1);
       }
-    } else if (playerHand === 'Scissors') {
+    } else if (playersHand === 'Scissors') {
       if (computerHand === 'Paper') {
         setResult('You Win');
         setScore(score + 1);
@@ -45,15 +40,28 @@ const Game = ({ score, playerHand, setScore }) => {
     }
   };
 
+  useEffect(() => {
+    draw();
+  }, [computerHand]);
+
   return (
     <div className='game'>
-      Your choice:{playerHand} <br />
-      Computer choice:{computerHand} <br />
-      Result:
-      <h2>{result === 'You Win' && result}</h2>
-      <h2>{result === 'You Lose' && result}</h2>
-      <h2>{result === 'Draw' && result}</h2>
-      <button onClick={() => setComputerHand()}>Play Again</button>
+      <div className='result'>
+        {result && (
+          <>
+            <h2 className='win'>{result === 'You Win' && result}</h2>
+            <h2 className='lose'>{result === 'You Lose' && result}</h2>
+            <h2 className='draw'>{result === 'Draw' && result}</h2>
+          </>
+        )}
+      </div>
+      <div className='hands'>
+        <p className='player'>{playersHand}</p>
+        <p className='computer'>{computerHand}</p>
+      </div>
+      <button className='play-again' onClick={setHand}>
+        Play
+      </button>
     </div>
   );
 };

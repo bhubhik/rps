@@ -4,25 +4,99 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
-
-.hand {
-  width: 50px;
-  padding: 10px;
-  border: 2px solid blue;
-  margin: 10px;
+.score-container {
+  height: 100px;
+  border-radius: 8px;
   text-align: center;
-  border-radius: 6px;
+  background-color: #06f;
+  color: white;
+  overflow: hidden;
+}
+.score-container h2 {
+  margin-top: 20px;
+}
+.score-container div {
+  font-size: 24px;
+  margin-top: -15px;
+}
+.hands {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.result {
+  text-align: center;
+  border-radius: 2px;
+}
+.result h2 {
+  color: #464242;
+  font-weight: 400;
+}
+.result h2.win {
+  color: #4bb543;
+}
+.result h2.draw {
+  color: #06f;
+}
+.result h2.lose,
+.computer {
+  color: #f44336;
+}
+button {
+  align-items: center;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  height: 45px;
+  justify-content: center;
+  padding: 0 17px;
+  text-decoration: none;
+  margin: 8px;
+  background-color: white;
+}
+button:hover,
+button.play-again:hover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+.game {
+  position: relative;
+}
+.play-again {
+  position: absolute;
+  top: 220px;
+  left: 60px;
+}
+button.play-again {
+  width: 60%;
+  margin: 0 auto;
+}
+.hands p {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+.player {
+  background-color: #4bb543;
+}
+.computer {
+  background-color: #f44336;
 }
